@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+// Define the service for analyzing text content.
+service TextAnalyzer {
+  // RPC method to analyze text and return various statistics.
+  rpc AnalyzeText (AnalysisRequest) returns (AnalysisResponse);
+}
+
+// Message containing the text content to be analyzed.
+message AnalysisRequest {
+  string text_content = 1;
+}
+
+// Message containing the results of the text analysis.
+message AnalysisResponse {
+  // Basic counts
+  int32 word_count = 1;
+  int32 sentence_count = 2;
+
+  // Word statistics
+  string longest_word = 3;
+  string shortest_word = 4;
+  
+  // New field for total server processing time (in seconds)
+  double server_processing_time = 5; 
+}
