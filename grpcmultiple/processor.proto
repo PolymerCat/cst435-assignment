@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package processor;
+
+// The service definition.
+service TextProcessor {
+  rpc Process (TextRequest) returns (TextResponse) {}
+}
+
+// The request message containing the text.
+message TextRequest {
+  string text = 1;
+}
+
+// The response message containing the result and execution time.
+message TextResponse {
+  string result = 1; // Using string to handle both numeric counts and text words
+  double time_taken = 2;
+}
